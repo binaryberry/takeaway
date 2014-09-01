@@ -7,15 +7,17 @@ let(:takeaway) 	{ Takeaway.new									}
 let(:order)		{ ["burrito", "2", "yes","cola", "2", "no"]		}
 let(:quantity)	{ 2												}
 
+	context "when asked for the menu" do
 
-	it "returns the price of a dish" do
-	expect(takeaway.price(:burrito)).to eq 7
+		it "returns the price of a dish" do
+		expect(takeaway.price(:burrito)).to eq 7
+		end
+
+		it "displays the list of dishes with their price" do 
+		expect(takeaway.show_menu)
+		end
 	end
-
-	it "displays the list of dishes with their price" do 
-	expect(takeaway.show_menu)
-	end
-
+	
 	context "when ordering" do
 
 		it "takes the client's order" do
@@ -42,5 +44,17 @@ let(:quantity)	{ 2												}
 		takeaway.take_order
 		expect(takeaway.order_total).to eq 18
 		end
+
+	context "when there is an error" do
+
+		it "returns an error message if order is below 5 pounds" do
+		allow(takeaway).to receive(:gets).exactly(3).times.and_return("cola", "2", "no")
+		takeaway.take_order
+		expect{takeaway.order_total}.to raise_error("£5 order minimum not reached")
+		end
+
+	end
+
+
 	end
 end
