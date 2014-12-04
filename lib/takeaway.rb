@@ -1,8 +1,8 @@
 require 'rubygems' # not necessary with ruby 1.9 but included for completeness
 require 'twilio-ruby'
 
-account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
+# account_sid = 'ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+# auth_token = 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
 
 @client = Twilio::REST::Client.new account_sid, auth_token
 
