@@ -54,5 +54,4 @@ ORDER_MINIMUM = 5
 
 		total
 	end
-
 end
